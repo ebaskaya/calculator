@@ -18,14 +18,16 @@ function operate(num1, num2, operation) {
     return operation(num1, num2);
 }
 
-function writeNumber(e) {
+function writeText(e) {
     screen.textContent += e.target.textContent;
 }
 
 const numberButtons = document.querySelectorAll('.num');
 const screen = document.querySelector('#screen');
+const clear = document.querySelector('#AC');
 
-numberButtons.forEach(addEventListener('click', writeNumber));
+clear.addEventListener('click', () => screen.textContent = '');
+numberButtons.forEach(button => button.addEventListener('click', writeText));
 
 
 
