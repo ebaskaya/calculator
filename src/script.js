@@ -14,9 +14,9 @@ function divide(num1, num2) {
     return num1 / num2;
 }
 
+function operate(num1, num2, operation) {
+    return operation(num1, num2);
+}
 
 
-console.log(divide(6, 4));
-console.log(multiply(3, 4.5));
-console.log(subtract(3, 1));
-console.log(add(5, 4));
+console.log(operate(5, 8, divide));
