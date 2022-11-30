@@ -1,22 +1,22 @@
-function add() {
+function add(num1, num2) {
     result = parseFloat(num1) + parseFloat(num2);
     endOperation(result);
     
 }
 
-function subtract() {
+function subtract(num1, num2) {
     result = num1 - num2;
     endOperation(result);
     
 }
 
-function multiply(){
+function multiply(num1, num2){
     result = num1 * num2;
     endOperation(result);
     
 }
 
-function divide() {
+function divide(num1, num2) {
     result = num1 / num2;
     endOperation(result);
     
@@ -25,7 +25,6 @@ function divide() {
 
 function endOperation(result) {
     screen.textContent = result;
-    num1 = result;
     operator = '';
 }
 
@@ -43,24 +42,27 @@ function calculate(){
     numArray = toEval.split(operator);
     num1 = numArray[0];
     num2 = numArray[1];
+    if(isNaN(num1) || isNaN(num2)){
+        return;
+    }
     
-    chooseOperator(operator);
+    chooseOperator(operator, num1, num2);
 
 }
 
 function chooseOperator(operator){
     switch(operator){
         case '+':
-            add();
+            add(num1, num2);
             break;
         case '-':
-            subtract();
+            subtract(num1, num2);
             break;
         case '*':
-            multiply();
+            multiply(num1, num2);
             break;
         case '/':
-            divide();
+            divide(num1, num2);
     }
 }
 
@@ -85,8 +87,7 @@ function assignNumbers() {
 
 
 
-let num1 = undefined;
-let num2 = undefined;
+
 
 
 let operator = '';
