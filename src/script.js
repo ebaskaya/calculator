@@ -74,8 +74,8 @@ function chooseOperator(operator){
 
 
 function writeOperator(e){
-    if(isNaN(screen.textContent.slice(-1))){ // If an operator is the last character in the string, return.
-        return;
+    if(isNaN(screen.textContent.slice(-1)) || screen.textContent === '0'){ // If an operator is the last character in the string, return.
+        return; // Also return if the screen is 0
     }
     if(operator === ''){
         operator = e.target.textContent;
