@@ -135,5 +135,11 @@ numberButtons.forEach(button => button.addEventListener('click', writeText));
 operators.forEach(button => button.addEventListener('click', writeOperator));
 equals.addEventListener('click', calculate);
 deleteButton.addEventListener('click', () => {
+    if(screen.textContent === '0'){
+        return;
+    }
     screen.textContent = screen.textContent.slice(0, -1);
+    if(screen.textContent === ''){
+        screen.textContent = '0';
+    }
 });
