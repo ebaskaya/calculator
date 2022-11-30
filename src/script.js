@@ -1,26 +1,32 @@
 function add() {
     result = parseFloat(num1) + parseFloat(num2);
-    screen.textContent = result;
-    num1 = result;
-    num2 = undefined;
+    endOperation(result);
+    
 }
 
 function subtract() {
-    screen.textContent = num1 - num2;
-    num1 = num1 - num2;
-    num2 = undefined;
+    result = num1 - num2;
+    endOperation(result);
+    
 }
 
 function multiply(){
-    screen.textContent = num1 * num2;
-    num1 = num1 * num2;
-    num2 = undefined;
+    result = num1 * num2;
+    endOperation(result);
+    
 }
 
 function divide() {
-    screen.textContent = num1 / num2;
-    num1 = num1 / num2;
-    num2 = undefined;
+    result = num1 / num2;
+    endOperation(result);
+    
+    
+}
+
+function endOperation(result) {
+    screen.textContent = result;
+    num1 = result;
+    operator = '';
 }
 
 function operate(num1, num2, operation) {
@@ -37,7 +43,7 @@ function calculate(){
     numArray = toEval.split(operator);
     num1 = numArray[0];
     num2 = numArray[1];
-
+    
     chooseOperator(operator);
 
 }
@@ -63,6 +69,10 @@ function writeOperator(e){
     if(operator === ''){
         operator = e.target.textContent;
     }
+    else {
+        calculate();
+        operator = e.target.textContent;
+    }
     
     screen.textContent += e.target.textContent
 }
@@ -72,9 +82,7 @@ function assignNumbers() {
 
 }
 
-function printResult(firstNum, secondNum, operator){
-    secondScreen.textContent = firstNum + operator + secondNum + '=';
-};
+
 
 
 let num1 = undefined;
@@ -91,14 +99,14 @@ const equals = document.querySelector('#equals');
 const clear = document.querySelector('#AC');
 
 
-secondScreen.textContent = '';
+
 clear.addEventListener('click', () => {
     screen.textContent = '';
-    secondScreen.textContent = '';
     num1 = undefined;
     num2 = undefined;
     operatorClicked = false;
     screenInput = false;
+    operator = '';
 });
 numberButtons.forEach(button => button.addEventListener('click', writeText));
 operators.forEach(button => button.addEventListener('click', writeOperator));
