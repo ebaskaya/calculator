@@ -1,5 +1,8 @@
 function add() {
-    return num1 + num2;
+    result = parseFloat(num1) + parseFloat(num2);
+    screen.textContent = result;
+    num1 = result;
+    num2 = undefined;
 }
 
 function subtract() {
@@ -9,11 +12,15 @@ function subtract() {
 }
 
 function multiply(){
-    return num1 * num2;
+    screen.textContent = num1 * num2;
+    num1 = num1 * num2;
+    num2 = undefined;
 }
 
 function divide() {
-    return num1 / num2;
+    screen.textContent = num1 / num2;
+    num1 = num1 / num2;
+    num2 = undefined;
 }
 
 function operate(num1, num2, operation) {
@@ -29,6 +36,10 @@ function writeText(e) {
 }
 
 function writeOperator(e){
+    if(operatorClicked === true){
+        calculate();
+        return;
+    }
     if(screen.textContent === ''){
         return;
     }
