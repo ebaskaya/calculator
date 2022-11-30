@@ -68,6 +68,9 @@ function chooseOperator(operator){
 
 
 function writeOperator(e){
+    if(isNaN(screen.textContent.slice(-1))){ // If an operator is the last character in the string, return.
+        return;
+    }
     if(operator === ''){
         operator = e.target.textContent;
     }
