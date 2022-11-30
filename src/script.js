@@ -126,6 +126,7 @@ screen.textContent = '0';
 
 const equals = document.querySelector('#equals');
 const clearButton = document.querySelector('#AC');
+const deleteButton = document.querySelector('#delete')
 
 
 
@@ -133,3 +134,6 @@ clearButton.addEventListener('click', clear);
 numberButtons.forEach(button => button.addEventListener('click', writeText));
 operators.forEach(button => button.addEventListener('click', writeOperator));
 equals.addEventListener('click', calculate);
+deleteButton.addEventListener('click', () => {
+    screen.textContent = screen.textContent.slice(0, -1);
+});
