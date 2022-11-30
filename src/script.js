@@ -1,21 +1,23 @@
-function add(num1, num2) {
+function add() {
     return num1 + num2;
 }
 
-function subtract(num1, num2) {
+function subtract() {
     screen.textContent = num1 - num2;
+    num1 = num1 - num2;
+    num2 = undefined;
 }
 
-function multiply(num1, num2){
+function multiply(){
     return num1 * num2;
 }
 
-function divide(num1, num2) {
+function divide() {
     return num1 / num2;
 }
 
 function operate(num1, num2, operation) {
-    return operation(num1, num2);
+    return operation();
 }
 
 function writeText(e) {
@@ -55,22 +57,22 @@ function calculate() {
         return
     }
     operator = secondScreen.textContent[0];
-    
+    printResult(num1, num2, operator);
     switch(operator){
         case '+':
-            add(num1, num2);
+            add();
             break;
         case '-':
-            subtract(num1, num2);
+            subtract();
             break;
         case '*':
-            multiply(num1, num2);
+            multiply();
             break;
         case '/':
-            divide(num1, num2);
+            divide();
         
     }
-    printResult(num1, num2, operator);
+    
 }
 
 let num1 = undefined;
