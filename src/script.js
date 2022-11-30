@@ -1,6 +1,6 @@
 function add() {
     result = parseFloat(num1) + parseFloat(num2);
-    screen.textContent = result;
+    secondScreen.textContent = result;
     num1 = result;
     num2 = undefined;
 }
@@ -28,54 +28,21 @@ function operate(num1, num2, operation) {
 }
 
 function writeText(e) {
-    if(e.target.textContent === '0' && screenInput === false){
-        return;
-    }
-    if(screenInput === false){
-        screen.textContent = '';
-    }
-    if(operatorClicked === true){
-        screen.textContent = '';
-        operatorClicked = false;
-    }
-    screenInput = true;
     screen.textContent += e.target.textContent;
+    
 }
 
-function writeOperator(e){
-    if(operatorClicked === true){
-        calculate();
-        return;
-    }
-    if(screen.textContent === ''){
-        return;
-    }
-    operatorClicked = true;
-    assignNumbers();
-    secondScreen.textContent = e.target.textContent + screen.textContent;
-}
+function calculate(){
+    let toEval = screen.textContent;
+    numArray = toEval.split(operator);
+    num1 = numArray[0];
+    num2 = numArray[1];
 
-function assignNumbers() {
-    if(num1 === undefined){
-        num1 = screen.textContent;
-    }
-    else {
-        num2 = screen.textContent; //num1 is already assigned
-    }
+    chooseOperator(operator);
 
 }
 
-function printResult(firstNum, secondNum, operator){
-    secondScreen.textContent = '=' + firstNum + operator + secondNum;
-};
-
-function calculate() {
-    assignNumbers();
-    if(num1 === undefined || num2 === undefined){
-        return
-    }
-    operator = secondScreen.textContent[0];
-    printResult(num1, num2, operator);
+function chooseOperator(operator){
     switch(operator){
         case '+':
             add();
@@ -88,16 +55,33 @@ function calculate() {
             break;
         case '/':
             divide();
-        
+    }
+}
+
+
+function writeOperator(e){
+    if(operator === ''){
+        operator = e.target.textContent;
     }
     
+    screen.textContent += e.target.textContent
 }
+
+function assignNumbers() {
+   
+
+}
+
+function printResult(firstNum, secondNum, operator){
+    secondScreen.textContent = firstNum + operator + secondNum + '=';
+};
+
 
 let num1 = undefined;
 let num2 = undefined;
 
-let operatorClicked = false;
-let screenInput = false;
+
+let operator = '';
 
 const numberButtons = document.querySelectorAll('.num');
 const operators = document.querySelectorAll('.operator');
@@ -106,15 +90,14 @@ const secondScreen = document.querySelector('#second-screen');
 const equals = document.querySelector('#equals');
 const clear = document.querySelector('#AC');
 
-screen.textContent = '0';
 
+secondScreen.textContent = '';
 clear.addEventListener('click', () => {
     screen.textContent = '';
     secondScreen.textContent = '';
     num1 = undefined;
     num2 = undefined;
     operatorClicked = false;
-    screen.textContent = '0';
     screenInput = false;
 });
 numberButtons.forEach(button => button.addEventListener('click', writeText));
