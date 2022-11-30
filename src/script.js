@@ -1,24 +1,29 @@
 function add(num1, num2) {
-    result = parseFloat(num1) + parseFloat(num2);
-    endOperation(result);
+    result = num1 + num2;
+    endOperation(parseFloat(result.toFixed(2)));
     
 }
 
 function subtract(num1, num2) {
     result = num1 - num2;
-    endOperation(result);
+    endOperation(parseFloat(result.toFixed(2)));
     
 }
 
 function multiply(num1, num2){
     result = num1 * num2;
-    endOperation(result);
+    endOperation(parseFloat(result.toFixed(2)));
     
 }
 
 function divide(num1, num2) {
+    if(num2 === '0'){
+        alert("You can't divide by zero!");
+        clear();
+        return;
+    }
     result = num1 / num2;
-    endOperation(result);
+    endOperation(parseFloat(result.toFixed(2)));
     
     
 }
@@ -46,8 +51,8 @@ function writeText(e) {
 function calculate(){
     let toEval = screen.textContent;
     numArray = toEval.split(operator);
-    num1 = numArray[0];
-    num2 = numArray[1];
+    num1 = parseFloat(numArray[0]);
+    num2 = parseFloat(numArray[1]);
     if(isNaN(num1) || isNaN(num2)){
         return;
     }
@@ -74,8 +79,8 @@ function chooseOperator(operator){
 
 
 function writeOperator(e){
-    if(isNaN(screen.textContent.slice(-1)) || screen.textContent === '0'){ // If an operator is the last character in the string, return.
-        return; // Also return if the screen is 0
+    if(isNaN(screen.textContent.slice(-1))){ // If an operator is the last character in the string, return.
+        return;
     }
     if(operator === ''){
         operator = e.target.textContent;
@@ -93,7 +98,10 @@ function assignNumbers() {
 
 }
 
-
+function clear() {
+    operator = '';
+    screen.textContent = '0';
+}
 
 
 
@@ -108,19 +116,11 @@ const screen = document.querySelector('#screen');
 screen.textContent = '0';
 
 const equals = document.querySelector('#equals');
-const clear = document.querySelector('#AC');
+const clearButton = document.querySelector('#AC');
 
 
 
-clear.addEventListener('click', () => {
-    screen.textContent = '';
-    num1 = undefined;
-    num2 = undefined;
-    operatorClicked = false;
-    screenInput = false;
-    operator = '';
-    screen.textContent = '0';
-});
+clearButton.addEventListener('click', clear);
 numberButtons.forEach(button => button.addEventListener('click', writeText));
 operators.forEach(button => button.addEventListener('click', writeOperator));
 equals.addEventListener('click', calculate);
