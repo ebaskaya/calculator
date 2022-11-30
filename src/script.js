@@ -33,6 +33,12 @@ function operate(num1, num2, operation) {
 }
 
 function writeText(e) {
+    if(screen.textContent === '0'){
+        if(e.target.textContent === '0'){
+            return
+        }
+        screen.textContent = '';
+    }
     screen.textContent += e.target.textContent;
     
 }
@@ -99,6 +105,8 @@ const numberButtons = document.querySelectorAll('.num');
 const operators = document.querySelectorAll('.operator');
 const screen = document.querySelector('#screen');
 
+screen.textContent = '0';
+
 const equals = document.querySelector('#equals');
 const clear = document.querySelector('#AC');
 
@@ -111,6 +119,7 @@ clear.addEventListener('click', () => {
     operatorClicked = false;
     screenInput = false;
     operator = '';
+    screen.textContent = '0';
 });
 numberButtons.forEach(button => button.addEventListener('click', writeText));
 operators.forEach(button => button.addEventListener('click', writeOperator));
