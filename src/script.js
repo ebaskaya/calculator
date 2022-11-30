@@ -50,8 +50,17 @@ function writeText(e) {
 
 function calculate(){
     let toEval = screen.textContent;
+    let negative = false;
+    if(toEval.slice(0,1) === '-' && operator === '-'){ //check if first character is '-' and the operator is '-'
+        negative = true;
+        toEval = toEval.slice(1);
+    } 
+
     numArray = toEval.split(operator);
     num1 = parseFloat(numArray[0]);
+    if(negative === true){
+        num1 = -num1;
+    }
     num2 = parseFloat(numArray[1]);
     if(isNaN(num1) || isNaN(num2)){
         return;
