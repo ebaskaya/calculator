@@ -1,6 +1,6 @@
 function add() {
     result = parseFloat(num1) + parseFloat(num2);
-    secondScreen.textContent = result;
+    screen.textContent = result;
     num1 = result;
     num2 = undefined;
 }
@@ -85,8 +85,8 @@ let operator = '';
 
 const numberButtons = document.querySelectorAll('.num');
 const operators = document.querySelectorAll('.operator');
-const screen = document.querySelector('#main-screen');
-const secondScreen = document.querySelector('#second-screen');
+const screen = document.querySelector('#screen');
+
 const equals = document.querySelector('#equals');
 const clear = document.querySelector('#AC');
 
