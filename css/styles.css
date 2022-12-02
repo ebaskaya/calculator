@@ -10,10 +10,14 @@ button, #screen{
     font-size: 15px;
 }
 
+button:hover{
+    box-shadow: 0px 0px 4px 1px  grey;
+}
+
 button{
     border-radius: 10px;
-    height: 5vh;
-    width: 5vh;
+    height: 50px;
+    width: 50px;
 }
 
 html {
@@ -68,23 +72,22 @@ body{
 #buttons {
     display:grid;
     grid-template-columns: repeat(4, 1fr);
+    grid-gap: 2px;
     
     
 }
 
-#buttons .child{
 
-}
 
 .operator {
     background-color: #FFFDB9;
 }
 
 #AC{
-    background-color: #DAB9FF
+    background-color: #DAB9FF;
 }
 #delete{
-    background-color: #FFB9BB
+    background-color: #FFB9BB;
 }
 
 
