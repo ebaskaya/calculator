@@ -1,5 +1,76 @@
+:root {
+    --diamond: #B9DEFF;
+}
+
+#header, #footer{
+    
+}
+
+html {
+    box-sizing: border-box;
+  }
+  *,
+  *::before,
+  *::after {
+    box-sizing: inherit;
+  } 
+
+body{
+    
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: peachpuff;
+
+}
+
+.utility{
+    background-color: #B9FFDA;
+}
+
 #screen{
+    width: 100%;
     resize: none;
     border: none;
     text-align: right;
+    background-color: var(--diamond)
 }
+
+#calculator{
+    border: 1px solid;
+    padding: 1vh;
+    
+    
+}
+
+
+
+.num{
+    background-color: var(--diamond);
+}
+
+#buttons {
+    display:grid;
+    grid-template-columns: repeat(4, 1fr);
+    
+}
+
+#buttons .child{
+    
+}
+
+.operator {
+    background-color: #FFFDB9;
+}
+
+#AC{
+    background-color: #DAB9FF
+}
+#delete{
+    background-color: #FFB9BB
+}
+
+
+
