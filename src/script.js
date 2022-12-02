@@ -1,6 +1,6 @@
 function add(num1, num2) {
     result = num1 + num2;
-    endOperation(parseFloat(result.toFixed(2)));
+    endOperation(parseFloat(result.toFixed(2))); //parseFloat removes unnecessary zeroes.
     
 }
 
@@ -17,7 +17,7 @@ function multiply(num1, num2){
 }
 
 function divide(num1, num2) {
-    if(num2 === '0'){
+    if(num2 === 0){
         alert("You can't divide by zero!");
         clear();
         return;
@@ -31,6 +31,13 @@ function divide(num1, num2) {
 function endOperation(result) {
     screen.textContent = result;
     operator = '';
+    if(!result.includes('.')){
+        dotButton.addEventListener('click', putDot);
+    }
+    else{
+        dotButton.removeEventListener('click', putDot);
+    }
+    
 }
 
 function operate(num1, num2, operation) {
@@ -86,6 +93,11 @@ function chooseOperator(operator){
     }
 }
 
+function putDot(){
+    screen.textContent += '.'
+    dotButton.removeEventListener('click', putDot);
+    
+}
 
 function writeOperator(e){
     if(isNaN(screen.textContent.slice(-1))){ // If an operator is the last character in the string, return.
@@ -98,18 +110,14 @@ function writeOperator(e){
         calculate();
         operator = e.target.textContent;
     }
-    
+    dotButton.addEventListener('click', putDot);
     screen.textContent += e.target.textContent
-}
-
-function assignNumbers() {
-   
-
 }
 
 function clear() {
     operator = '';
     screen.textContent = '0';
+    dotButton.addEventListener('click', putDot);
 }
 
 
@@ -126,8 +134,8 @@ screen.textContent = '0';
 
 const equals = document.querySelector('#equals');
 const clearButton = document.querySelector('#AC');
-const deleteButton = document.querySelector('#delete')
-
+const deleteButton = document.querySelector('#delete');
+const dotButton = document.querySelector('#dot');
 
 
 clearButton.addEventListener('click', clear);
@@ -143,3 +151,4 @@ deleteButton.addEventListener('click', () => {
         screen.textContent = '0';
     }
 });
+dotButton.addEventListener('click', putDot);
