@@ -2,12 +2,18 @@
     --diamond: #B9DEFF;
 }
 
-#header, #footer{
-    
+#header {
+    font-size: larger;
+}
+
+button, #screen{
+    font-size: 15px;
 }
 
 button{
-    border-radius: 20px;
+    border-radius: 10px;
+    height: 5vh;
+    width: 5vh;
 }
 
 html {
@@ -39,7 +45,8 @@ body{
     resize: none;
     border: none;
     text-align: right;
-    background-color: var(--diamond)
+    background-color: var(--diamond);
+    border-radius: 10px;
 }
 
 #calculator{
@@ -47,6 +54,7 @@ body{
     padding: 1vh;
     border-width: 5px;
     border-radius: 20px;
+    border-color: #7792a9;
     
     
 }
@@ -61,10 +69,11 @@ body{
     display:grid;
     grid-template-columns: repeat(4, 1fr);
     
+    
 }
 
 #buttons .child{
-    
+
 }
 
 .operator {
