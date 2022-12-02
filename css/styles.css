@@ -6,6 +6,10 @@
     
 }
 
+button{
+    border-radius: 20px;
+}
+
 html {
     box-sizing: border-box;
   }
@@ -41,6 +45,8 @@ body{
 #calculator{
     border: 1px solid;
     padding: 1vh;
+    border-width: 5px;
+    border-radius: 20px;
     
     
 }
