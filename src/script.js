@@ -102,9 +102,12 @@ function chooseOperator(operator){
     }
 }
 
-function dotCheck(char){ //Checks to see if it's needed to put an event listener to dot button
-    if(char === '.'){
+function deleteCheck(char){ //Checks to see if it's needed to put an event listener to dot button
+    if(char === '.'){ //And if operator is deleted makes operator ''
         dotButton.addEventListener('click', putDot);
+    }
+    if(char === operator){
+        operator = '';
     }
 } 
 
@@ -160,7 +163,7 @@ deleteButton.addEventListener('click', () => {
     if(screen.textContent === '0'){
         return;
     }
-    dotCheck(screen.textContent.slice(-1));
+    deleteCheck(screen.textContent.slice(-1));
     screen.textContent = screen.textContent.slice(0, -1);
     if(screen.textContent === ''){
         screen.textContent = '0';
