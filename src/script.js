@@ -28,10 +28,11 @@ function divide(num1, num2) {
     
 }
 
+
 function endOperation(result) {
     screen.textContent = result;
     operator = '';
-    if(!result.includes('.')){
+    if(!String(result).includes('.')){
         dotButton.addEventListener('click', putDot);
     }
     else{
@@ -93,6 +94,12 @@ function chooseOperator(operator){
     }
 }
 
+function dotCheck(char){ //Checks to see if it's needed to put an event listener to dot button
+    if(char === '.'){
+        dotButton.addEventListener('click', putDot);
+    }
+} 
+
 function putDot(){
     screen.textContent += '.'
     dotButton.removeEventListener('click', putDot);
@@ -122,8 +129,6 @@ function clear() {
 
 
 
-
-
 let operator = '';
 
 const numberButtons = document.querySelectorAll('.num');
@@ -137,6 +142,7 @@ const clearButton = document.querySelector('#AC');
 const deleteButton = document.querySelector('#delete');
 const dotButton = document.querySelector('#dot');
 
+dotButton.addEventListener('click', putDot);
 
 clearButton.addEventListener('click', clear);
 numberButtons.forEach(button => button.addEventListener('click', writeText));
@@ -146,9 +152,9 @@ deleteButton.addEventListener('click', () => {
     if(screen.textContent === '0'){
         return;
     }
+    dotCheck(screen.textContent.slice(-1));
     screen.textContent = screen.textContent.slice(0, -1);
     if(screen.textContent === ''){
         screen.textContent = '0';
     }
 });
-dotButton.addEventListener('click', putDot);
