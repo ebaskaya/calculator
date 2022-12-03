@@ -46,15 +46,18 @@ function operate(num1, num2, operation) {
 }
 
 function writeText(e) {
-    if(screen.textContent === '0'){
+    let screenText = screen.textContent;
+    
+    if(screenText === '0'){
         if(e.target.textContent === '0'){
             return
         }
         
         screen.textContent = '';
     }
-    if(e.target.textContent === '0' && screen.textContent.slice(-1) === '0' && operator != '' && 
-    !screen.textContent.includes('.')) {
+    if(e.target.textContent === '0' && screenText.slice(-1) === '0' && operator != '') {
+        let afterOp = screenText.slice(screenText.indexOf(operator));
+        if(!afterOp.includes('.'))
         return;
     }
     screen.textContent += e.target.textContent;
