@@ -50,7 +50,12 @@ function writeText(e) {
         if(e.target.textContent === '0'){
             return
         }
+        
         screen.textContent = '';
+    }
+    if(e.target.textContent === '0' && screen.textContent.slice(-1) === '0' && operator != '' && 
+    !screen.textContent.includes('.')) {
+        return;
     }
     screen.textContent += e.target.textContent;
     
